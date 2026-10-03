@@ -1,3 +1,5 @@
+import { MapPin } from "lucide-react";
+
 const times = Array.from({ length: 29 }, (_, i) => {
   const minutes = 7 * 60 + i * 30;
   const hours = Math.floor(minutes / 60);
@@ -12,8 +14,9 @@ const labelClass = "flex flex-col gap-2 text-sm font-bold";
 const inputClass =
   "h-14 w-full rounded-[10px] border-[1.5px] border-[#D8D2C4] bg-white px-3.5 text-base font-medium text-[#1A1A1A] outline-none transition-colors focus:border-brand-gold";
 
-const optionClass =
-  "flex h-11 items-center justify-center rounded-lg text-[15px] font-bold text-[#5A5A5A] transition-colors peer-checked:bg-white peer-checked:text-[#1A1A1A] peer-checked:shadow-sm peer-focus-visible:ring-2 peer-focus-visible:ring-brand-gold";
+// Стиль переключателя «самовывоз / доставка». Вернём, когда включим доставку.
+// const optionClass =
+//   "flex h-11 items-center justify-center rounded-lg text-[15px] font-bold text-[#5A5A5A] transition-colors peer-checked:bg-white peer-checked:text-[#1A1A1A] peer-checked:shadow-sm peer-focus-visible:ring-2 peer-focus-visible:ring-brand-gold";
 
 export default function BookingForm() {
   return (
@@ -55,16 +58,11 @@ export default function BookingForm() {
         </label>
       </div>
 
+      {/* Переключатель «самовывоз / доставка». Вернём, когда включим доставку.
       <fieldset className="grid grid-cols-2 gap-2 rounded-[10px] bg-brand-cream p-1.5">
         <legend className="sr-only">How do you want to get the car?</legend>
         <label className="cursor-pointer">
-          <input
-            type="radio"
-            name="pickupType"
-            value="pickup"
-            defaultChecked
-            className="peer sr-only"
-          />
+          <input type="radio" name="pickupType" value="pickup" defaultChecked className="peer sr-only" />
           <span className={optionClass}>I&apos;ll pick it up</span>
         </label>
         <label className="cursor-pointer">
@@ -72,6 +70,12 @@ export default function BookingForm() {
           <span className={optionClass}>Deliver to me</span>
         </label>
       </fieldset>
+      */}
+
+      <div className="flex items-center gap-2 rounded-[10px] bg-brand-cream px-4 py-3.5 text-[15px]">
+        <MapPin size={18} className="shrink-0 text-brand-gold-dark" aria-hidden="true" />
+        Pickup: [Address], Houston, TX
+      </div>
 
       <button
         type="submit"
